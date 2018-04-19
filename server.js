@@ -30,12 +30,12 @@ app.use((req, res, next) => { //.use() como registra um middleware
     next();
 });
 
-app.use((req, res, next) => {
-    res.render( 'maintenance.hbs', {
-        pageTitle: 'maintenance',
-        msg: 'The app is under maintenance. Please come back soon.'
-    });
-});
+// app.use((req, res, next) => {
+//     res.render( 'maintenance.hbs', {
+//         pageTitle: 'maintenance',
+//         msg: 'The app is under maintenance. Please come back soon.'
+//     });
+// });
 
 app.use(express.static(__dirname + '/public')); //usando a var __dirname eh pego o dir onde estamos da app
 
@@ -65,6 +65,15 @@ app.get('/about', (req, res) => {
         pageTitle: 'Felipe about page'
     });
 });
+
+app.get('/new', (req, res) => {
+    res.render('new.hbs', {
+        info: 'Deploying the app do heroku',
+        pageTitle: 'Heroku test',
+        title: 'heroku'
+    });
+});
+
 
 app.get('/bad', (req, res) => {
     res.send({errorMessage: 'Bad request!'});
